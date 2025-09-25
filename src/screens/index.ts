@@ -1,0 +1,1 @@
+export {default as DebitCardScreen} from "./debitCard";
