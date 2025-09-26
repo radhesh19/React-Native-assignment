@@ -24,7 +24,7 @@ import DeactivateIcon from '../../assets/images/Transfer2.svg';
 import Insight from '../../assets/images/insight.svg';
 import DebitCardConstants from './constant';
 import { useDispatch, useSelector } from 'react-redux';
-import { getData } from '../../redux/debitCard/action';
+import { getData, toggleMenuOption } from '../../redux/debitCard/action';
 import { RootState, AppDispatch } from '../../redux/store';
 import { IMenuOption } from '../../types/debit_card.types';
 
@@ -131,7 +131,7 @@ const DebitCardScreen: React.FC = () => {
     </View>
   );
 
-  const renderItem: ListRenderItem<IMenuOption> = ({ item }) => {
+  const renderItem: ListRenderItem<IMenuOption> = ({ item, index }) => {
     const Icon = actionIcons[item.action];
     return (
       <View style={styles.optionItem}>
@@ -148,6 +148,7 @@ const DebitCardScreen: React.FC = () => {
             style={{ transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }] }}
             onValueChange={value => {
               console.log(`${item.title} toggled: `, value);
+              dispatch(toggleMenuOption(index, value));
             }}
             trackColor={{ false: '#ccc', true: '#01D167' }}
             thumbColor={item.isToggledOn ? '#fff' : '#f4f3f4'}

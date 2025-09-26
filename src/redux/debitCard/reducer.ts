@@ -16,7 +16,7 @@ const initialState: DebitCardState = {
 
 const getDataReducer = (
   state: DebitCardState = initialState,
-  action: DebitCardActions
+  action: DebitCardActions,
 ): DebitCardState => {
   switch (action.type) {
     case Constants.GET_DATA_LOAD:
@@ -36,6 +36,23 @@ const getDataReducer = (
         loading: false,
         error: action.payload,
       };
+    case Constants.TOGGLE_MENU_OPTION: {
+      if (!state.data) return state;
+
+      const updatedMenuOptions = [...state.data.menuOptions];
+      updatedMenuOptions[action.payload.index] = {
+        ...updatedMenuOptions[action.payload.index],
+        isToggledOn: action.payload.value,
+      };
+
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          menuOptions: updatedMenuOptions,
+        },
+      };
+    }
 
     default:
       return state;

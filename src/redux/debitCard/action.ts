@@ -12,19 +12,25 @@ export interface GetDataSuccessAction {
 
 export interface GetDataFailAction {
   type: typeof Constants.GET_DATA_FAIL;
-  payload: string; // error message
+  payload: string; 
 }
+export interface ToggleMenuOptionAction {
+  type: typeof Constants.TOGGLE_MENU_OPTION;
+  payload: { index: number; value: boolean }; 
+}
+
 
 export type DebitCardActions =
   | GetDataLoadAction
   | GetDataSuccessAction
-  | GetDataFailAction;
+  | GetDataFailAction
+  | ToggleMenuOptionAction;
 
 export const getData = (): GetDataLoadAction => ({
   type: Constants.GET_DATA_LOAD,
 });
 
-
-export const toggleCardVisibility = () => ({
-  type: Constants.TOGGLE_CARD_VISIBILITY,
+export const toggleMenuOption = (index: number, value: boolean): ToggleMenuOptionAction => ({
+  type: Constants.TOGGLE_MENU_OPTION,
+  payload: { index, value },
 });
