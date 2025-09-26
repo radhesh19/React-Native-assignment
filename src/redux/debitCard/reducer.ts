@@ -1,5 +1,4 @@
-import { DebitCardActions } from './action';
-import { IFMockData } from '../../types/debit_card.types';
+import { DebitCardActions, IFMockData } from '../../types/debit_card.types';
 import { Constants } from '../contains';
 
 interface DebitCardState {

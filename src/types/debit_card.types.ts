@@ -1,3 +1,5 @@
+import { Constants } from "../redux/contains";
+
 // types.ts
 export interface IAccountInfo {
   availableBalance: {
@@ -34,4 +36,27 @@ export interface IDebitCardState {
   error: string | null;
 }
 
-  
+export interface GetDataLoadAction {
+  type: typeof Constants.GET_DATA_LOAD;
+}
+
+export interface GetDataSuccessAction {
+  type: typeof Constants.GET_DATA_SUCCESS;
+  payload: IFMockData;
+}
+
+export interface GetDataFailAction {
+  type: typeof Constants.GET_DATA_FAIL;
+  payload: string; 
+}
+export interface ToggleMenuOptionAction {
+  type: typeof Constants.TOGGLE_MENU_OPTION;
+  payload: { index: number; value: boolean }; 
+}
+
+
+export type DebitCardActions =
+  | GetDataLoadAction
+  | GetDataSuccessAction
+  | GetDataFailAction
+  | ToggleMenuOptionAction;  
